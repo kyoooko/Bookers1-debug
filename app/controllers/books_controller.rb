@@ -13,28 +13,37 @@ class BooksController < ApplicationController
   def show
   end
 
-  # GET /books/1/edit
-  def edit
-  end
+  
 
   # POST /books
   # POST /books.json
   def create
     @book = Book.new(book_params)
+    
     if @book.save
       redirect_to @book, notice: 'Book was successfully created.'
     else
+      @books=Book.all
       render :index
     end
+  end
+
+
+  # GET /books/1/edit
+  def edit
   end
 
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    if @book.update()
+    binding.pry
+    if @book.update(book_params)
       redirect_to @book, notice: 'Book was successfully updated.'
+      # flash[:notice]="Book was successfully updated."
+      # redirect_to book_path(@book.id)
     else
       render :edit
+      # render 'books/edit'
     end
   end
 
