@@ -36,7 +36,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    binding.pry
+    # binding.pry
     if @book.update(book_params)
       redirect_to @book, notice: 'Book was successfully updated.'
       # flash[:notice]="Book was successfully updated."
